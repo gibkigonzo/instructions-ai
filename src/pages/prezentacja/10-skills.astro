@@ -1,0 +1,47 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Agent Skills" slideNumber={10} prevSlug="09-prompts-gallery" nextSlug="11-skills-example">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      <span class="text-purple-400">Agent Skills</span> — pakiety kompetencji
+    </h2>
+
+    <MermaidDiagram>
+      {`flowchart LR
+    User["🧑‍💻 'Napisz testy'"] --> Agent["🤖 Agent"]
+
+    subgraph Skill[".github/skills/astro-testing/"]
+        Meta["📋 Level 1: Meta<br/><small>name + description</small>"]
+        Body["📖 Level 2: SKILL.md<br/><small>procedura + zasady</small>"]
+        Res["📁 Level 3: Zasoby<br/><small>skrypty, przykłady</small>"]
+    end
+
+    Agent -->|"discovery — czyta zawsze"| Meta
+    Agent -->|"jeśli pasuje do zadania"| Body
+    Agent -->|"jeśli potrzebne"| Res`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-400 text-lg">
+      Agent <strong class="text-white">sam decyduje</strong>, którego skilla użyć — na podstawie opisu
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Skill to folder z SKILL.md i opcjonalnymi zasobami (skrypty, przykłady, szablony). Agent sięga po niego gdy uzna, że pasuje do zadania.</li>
+      <li><strong>3 poziomy ładowania</strong> (progressive loading):
+        <ol class="list-decimal ml-6 mt-1 space-y-1">
+          <li><strong>Level 1 — Meta</strong>: Agent ZAWSZE czyta <code>name</code> + <code>description</code> z frontmatteru SKILL.md. To „spis treści biblioteki".</li>
+          <li><strong>Level 2 — Body</strong>: Jeśli opis pasuje do obecnego zadania, agent ładuje pełną treść SKILL.md (procedury, zasady, format odpowiedzi).</li>
+          <li><strong>Level 3 — Zasoby</strong>: Jeśli potrzebne, agent dociąga dodatkowe pliki z folderu skilla (skrypty, przykłady testów, szablony).</li>
+        </ol>
+      </li>
+      <li>Nie zaśmieca kontekstu — agent ładuje tylko to, co potrzebne. W repo z 20 skillami agent czyta 20 linijek opisów, nie 20 stron procedur.</li>
+      <li>Analogia: podręcznik na półce. Agent sięga po niego gdy potrzebuje, nie nosi cały czas.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

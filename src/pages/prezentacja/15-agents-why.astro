@@ -1,0 +1,56 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Po co agenci?" slideNumber={15} prevSlug="14-agents-gallery" nextSlug="16-agents-instructions">
+  <div class="space-y-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      Po co agenci, skoro mam <span class="text-green-400">prompty</span> + <span class="text-purple-400">skille</span>?
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <p class="text-amber-400 font-semibold text-lg">1. Persona sesji</p>
+        <p class="text-gray-400 text-sm">Agent trzyma spójną rolę i styl przez CAŁĄ rozmowę, nie tylko jedną wiadomość.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <p class="text-amber-400 font-semibold text-lg">2. Twarde granice</p>
+        <p class="text-gray-400 text-sm"><code>tools</code> = co agent FIZYCZNIE może zrobić. Brak <code>edit</code> ≠ prośba, to ograniczenie.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <p class="text-amber-400 font-semibold text-lg">3. Handoffy</p>
+        <p class="text-gray-400 text-sm">Deklaratywne przejścia: Build → Review → Security z przyciskami w UI.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <p class="text-amber-400 font-semibold text-lg">4. Współdzielenie</p>
+        <p class="text-gray-400 text-sm">Agenci na poziomie organizacji — widoczni we wszystkich repo.</p>
+      </div>
+    </div>
+
+    <MermaidDiagram class="max-w-lg mx-auto">
+      {`graph LR
+    S["🧠 code-review<br/><small>ten sam skill</small>"]
+    MD["main-dev<br/><small>self-review</small>"] --- S
+    R["reviewer<br/><small>formalny review</small>"] --- S
+
+    style S fill:#581c87,stroke:#a855f7,color:#e9d5ff`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-500 text-sm">
+      Ten sam skill, inna rola i inne narzędzia — to jest różnica, którą daje agent
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Agenci dają 4 rzeczy, których prompty + skille nie robią.</li>
+      <li><strong>1. Persona sesji</strong> — prompt definiuje jednorazowe zadanie. Agent definiuje KIM jest Copilot przez CAŁĄ rozmowę. Reviewer zachowuje się jak reviewer od początku do końca.</li>
+      <li><strong>2. Twarde granice</strong> — prompt może poprosić „nie edytuj plików". Agent FIZYCZNIE nie ma narzędzia <code>edit</code> — hard boundary vs soft rule.</li>
+      <li><strong>3. Handoffy</strong> — przycisk w UI przenosi do innego agenta z całym kontekstem. Build → Review → Security → Back to Build. Bez agentów user musi ręcznie kopiować kontekst.</li>
+      <li><strong>4. Współdzielenie</strong> — agent może być zdefiniowany na poziomie org. <code>@org-security-reviewer</code> widoczny we wszystkich repo.</li>
+      <li>Diagram: ten sam skill <code>code-review</code> używany przez <code>main-dev</code> (self-review) i <code>reviewer</code> (formalny review). Skill współdzielony, kontekst inny.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

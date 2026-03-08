@@ -1,0 +1,41 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+---
+
+<PresentationLayout title="Repo-wide Instructions" slideNumber={5} prevSlug="04-instructions" nextSlug="06-instructions-path">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      <span class="text-blue-400">.github/copilot-instructions.md</span>
+    </h2>
+    <p class="text-center text-gray-400">Repo-wide — Copilot widzi to <strong class="text-white">w każdej rozmowie</strong></p>
+
+    <div class="bg-gray-900 rounded-xl border border-gray-800 p-6 text-sm md:text-base font-mono leading-relaxed overflow-x-auto">
+      <p class="text-gray-500 mb-4"># GitHub Copilot – instrukcje repo</p>
+      <p class="text-gray-300 mb-2">To repozytorium używa:</p>
+      <ul class="text-gray-300 space-y-1 ml-4 list-disc mb-4">
+        <li><span class="text-blue-400">Astro 4+</span> z TypeScriptem do renderingu stron i komponentów.</li>
+        <li><span class="text-green-400">Vitest</span> do testów jednostkowych i integracyjnych, <span class="text-green-400">Playwright</span> do E2E.</li>
+        <li><span class="text-yellow-400">ESLint</span> (z eslint-plugin-astro) oraz <span class="text-yellow-400">Prettier</span> do spójnego stylu.</li>
+      </ul>
+      <p class="text-gray-500 mb-2">## Ogólne zasady</p>
+      <ul class="text-gray-300 space-y-1 ml-4 list-disc">
+        <li>Preferuj czysty, prosty kod zamiast sprytnych hacków</li>
+        <li>Każda nowa funkcja powinna mieć testy</li>
+        <li>Bezpieczeństwo — walidacja danych, brak wycieków sekretów</li>
+        <li>Dostępność (a11y) i poprawna semantyka HTML</li>
+        <li>Performance — unikanie zbędnego JS na kliencie</li>
+      </ul>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Plik <code>.github/copilot-instructions.md</code> jest jedynym plikiem, który Copilot czyta ZAWSZE w tym repo.</li>
+      <li>Deklarowane tu technologie (Astro, Vitest, ESLint) — dzięki temu Copilot nie zaproponuje Express.js czy Jesta.</li>
+      <li>Zasady ogólne — testy, bezpieczeństwo, a11y, performance — filtrują jakość generowanego kodu.</li>
+      <li>Nie warto pisać tu szczegółów „jak testować" czy „jak robić review" — od tego są skille.</li>
+      <li>Ten plik powinien być krótki i ogólny — szczegóły idą do path-scoped instructions i skilli.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

@@ -1,0 +1,66 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+---
+
+<PresentationLayout title="Podsumowanie" slideNumber={21} prevSlug="20-cheatsheet">
+  <div class="text-center space-y-10">
+    <h2 class="text-3xl md:text-4xl font-bold">
+      Podsumowanie
+    </h2>
+
+    <div class="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="space-y-2">
+        <div class="text-4xl">📋</div>
+        <p class="text-blue-400 font-semibold">Instructions</p>
+        <p class="text-gray-400 text-sm">Reguły „always-on" — tło dla każdej rozmowy</p>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl">📝</div>
+        <p class="text-green-400 font-semibold">Prompts</p>
+        <p class="text-gray-400 text-sm">Nazwane komendy — powtarzalny workflow</p>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl">🧠</div>
+        <p class="text-purple-400 font-semibold">Skills</p>
+        <p class="text-gray-400 text-sm">Pakiety kompetencji — auto-wykrywane</p>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl">🤖</div>
+        <p class="text-amber-400 font-semibold">Agents</p>
+        <p class="text-gray-400 text-sm">Role z narzędziami, granicami i handoffami</p>
+      </div>
+    </div>
+
+    <div class="space-y-4 pt-4">
+      <p class="text-xl text-gray-300">
+        Zacznij od <span class="text-blue-400 font-semibold">instructions</span>,
+        dodawaj resztę gdy potrzebujesz
+      </p>
+
+      <div class="flex items-center justify-center gap-4 text-gray-500 text-sm pt-4">
+        <span>Repo z przykładami →</span>
+        <code class="text-gray-300 bg-gray-900 px-3 py-1 rounded">github.com/…/instrukcje-ai</code>
+      </div>
+    </div>
+
+    <p class="text-5xl pt-6">❓</p>
+    <p class="text-2xl text-gray-300 font-semibold">Pytania?</p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>4 klocki, każdy rozwiązuje inny problem: Instructions = reguły, Prompts = workflow, Skills = kompetencje, Agents = role.</li>
+      <li>Nie trzeba używać wszystkich od razu. <code>copilot-instructions.md</code> to 5 minut pracy i już daje wartość.</li>
+      <li>Link do repo ze wszystkimi przykładami z prezentacji.</li>
+    </ul>
+    <p class="mt-3 font-semibold text-gray-300">Potencjalne pytania:</p>
+    <ul class="list-disc ml-4 mt-1 space-y-1">
+      <li><strong>„Czy to działa z innymi IDE?"</strong> — Instructions i prompts działają w VS Code i GitHub.com. Agenty też działają w Copilot coding agent na github.com.</li>
+      <li><strong>„Ile to kosztuje kontekstu?"</strong> — Instructions i meta skilli ładowane zawsze, ale są krótkie. Pełne skille ładowane on-demand. Progressive loading minimalizuje zużycie.</li>
+      <li><strong>„Kto to utrzymuje?"</strong> — Te same osoby co README/Contributing. Instructions rzadko się zmieniają. Skille aktualizujesz gdy zmienia się procedura.</li>
+      <li><strong>„Czy agent może odmówić?"</strong> — Tak, jeśli nie ma narzędzia (np. reviewer bez <code>edit</code> nie zapisze pliku). To twarda granica, nie sugestia.</li>
+      <li><strong>„A co z MCP?"</strong> — Agenty mogą mieć <code>mcp-servers</code> w konfiguracji — rozszerza możliwości o zewnętrzne API.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<div class="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+		<div class="text-center space-y-8 px-8">
+			<h1 class="text-4xl md:text-5xl font-bold">Instrukcje AI</h1>
+			<p class="text-xl text-gray-400">Przykładowy projekt Astro z customizacją GitHub Copilot</p>
+
+			<div class="flex flex-col items-center gap-4 pt-4">
+				<a
+					href="/prezentacja"
+					class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+				>
+					Otwórz prezentację →
+				</a>
+				<p class="text-gray-500 text-sm">20 slajdów · ~35-40 min · Instructions, Prompts, Skills, Agents</p>
+			</div>
+		</div>
+	</div>
 </Layout>

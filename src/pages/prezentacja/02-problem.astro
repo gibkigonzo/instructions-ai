@@ -1,0 +1,51 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Problem" slideNumber={2} prevSlug="01-intro" nextSlug="03-overview">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      Dlaczego domyślny Copilot <span class="text-red-400">nie wystarczy</span>?
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <ul class="space-y-4 text-lg text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-red-400 text-xl">✗</span>
+          <span>Nie zna architektury i konwencji projektu</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-red-400 text-xl">✗</span>
+          <span>Generuje niespójny styl kodu</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-red-400 text-xl">✗</span>
+          <span>Ignoruje politykę bezpieczeństwa</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-red-400 text-xl">✗</span>
+          <span>Każdy dev dostaje inne odpowiedzi</span>
+        </li>
+      </ul>
+
+      <MermaidDiagram>
+        {`graph LR
+    Dev["🧑‍💻 Developer"] --> Copilot["🤖 Copilot"]
+    Copilot --> Q["❓ Brak kontekstu"]
+    style Q fill:#7f1d1d,stroke:#ef4444,color:#fca5a5`}
+      </MermaidDiagram>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Przykład 1: Projekt w Astro, a Copilot generuje Express.js middleware — bo nie wie, że to projekt Astro.</li>
+      <li>Przykład 2: Jeden dev dostaje komponenty z Composition API, drugi z Options API — bo Copilot nie zna konwencji zespołu.</li>
+      <li>Przykład 3: Copilot wstrzykuje dane użytkownika przez <code>set:html</code> bez sanityzacji — bo nie zna security policy.</li>
+      <li>Problem skaluje się z zespołem — im więcej ludzi, tym większy chaos.</li>
+      <li>Copilot jest potężny, ale bez kontekstu działa „na ślepo".</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

@@ -1,0 +1,51 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Custom Instructions" slideNumber={4} prevSlug="03-overview" nextSlug="05-instructions-repo">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      <span class="text-blue-400">Custom Instructions</span> — reguły „always-on"
+    </h2>
+
+    <MermaidDiagram>
+      {`flowchart TB
+    User["🧑‍💻 Pytanie / prompt"] --> Agent["🤖 Agent"]
+
+    subgraph Instructions["Warstwy instrukcji — ładowane automatycznie"]
+        direction TB
+        Personal["👤 Personal / Org instructions"]
+        RepoInstr["📦 .github/copilot-instructions.md<br/><small>cały repo</small>"]
+        PathInstr["📂 .github/instructions/*.instructions.md<br/><small>konkretne ścieżki</small>"]
+        AgentInstr["🤖 .github/agents/AGENT.md<br/><small>instrukcje agenta</small>"]
+    end
+
+    Agent --> Personal
+    Agent --> RepoInstr
+    Agent --> PathInstr
+    Agent --> AgentInstr`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-400 text-lg">
+      Budują <strong class="text-white">kontekst systemowy</strong> — obowiązują bez wywoływania
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Instructions to reguły, które Copilot widzi ZAWSZE w danym repo. Nie trzeba ich wywoływać — działają automatycznie.</li>
+      <li><strong>4 warstwy</strong> (od szerokiej do wąskiej):
+        <ol class="list-decimal ml-6 mt-1 space-y-1">
+          <li><strong>Personal/Org</strong> — ustawienia na GitHubie, obowiązują we wszystkich repo</li>
+          <li><strong>Repo-wide</strong> — <code>.github/copilot-instructions.md</code> — dla całego repozytorium</li>
+          <li><strong>Path-scoped</strong> — <code>.github/instructions/*.instructions.md</code> — ładowane tylko gdy edytowane pliki pasują do glob pattern (np. <code>src/pages/api/**</code>)</li>
+          <li><strong>Agent-specific</strong> — treść w <code>.agent.md</code> — obowiązuje tylko danego agenta</li>
+        </ol>
+      </li>
+      <li>Security instructions mają najwyższy priorytet — overridują inne gdy jest konflikt.</li>
+      <li>Analogia: instructions = „kodeks postępowania". Obowiązuje wszystkich, nie trzeba go codziennie otwierać.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

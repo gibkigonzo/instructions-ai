@@ -1,0 +1,53 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Pełny pipeline" slideNumber={17} prevSlug="16-agents-instructions" nextSlug="18-handoffs">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      Pełny pipeline — od pytania do odpowiedzi
+    </h2>
+
+    <MermaidDiagram>
+      {`sequenceDiagram
+    actor User as 🧑‍💻 Użytkownik
+    participant Agent as 🤖 Agent
+    participant Instr as 📋 Instructions
+    participant Skills as 🧠 Skills
+
+    User->>Agent: wiadomość / /prompt
+
+    rect rgba(59, 130, 246, 0.1)
+    Note over Agent,Instr: 1. Kontekst systemowy
+    Agent->>Instr: personal / org instructions
+    Agent->>Instr: .github/copilot-instructions.md
+    Agent->>Instr: path instructions (jeśli dotyczą pliku)
+    Agent->>Agent: własne instrukcje agenta
+    end
+
+    rect rgba(168, 85, 247, 0.1)
+    Note over Agent,Skills: 2. Discovery skilli
+    Agent->>Skills: czytaj meta (name + description)
+    Skills-->>Agent: lista pasujących skilli
+    Agent->>Skills: załaduj SKILL.md dla dopasowanych
+    end
+
+    rect rgba(34, 197, 94, 0.1)
+    Note over Agent: 3. Generowanie odpowiedzi
+    Agent-->>User: odpowiedź, kod, testy
+    end`}
+    </MermaidDiagram>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Pełna sekwencja tego, co się dzieje od momentu napisania wiadomości do Copilota.</li>
+      <li><strong>Krok 1 — Kontekst systemowy</strong>: Agent automatycznie wczytuje WSZYSTKIE instrukcje w zasięgu. Personal/org → repo-wide → path-scoped → własne instrukcje agenta.</li>
+      <li><strong>Krok 2 — Discovery skilli</strong>: Agent czyta <code>name</code> + <code>description</code> WSZYSTKICH skilli (Level 1). Dopasowuje pasujące. Ładuje pełne SKILL.md (Level 2) tylko dla dopasowanych — oszczędza kontekst.</li>
+      <li><strong>Krok 3 — Generowanie</strong>: Z pełnym kontekstem (instrukcje + skille) agent generuje odpowiedź.</li>
+      <li>Cały proces jest transparentny dla usera — widzi tylko pytanie → odpowiedź.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

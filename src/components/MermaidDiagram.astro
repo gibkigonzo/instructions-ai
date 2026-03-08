@@ -1,0 +1,14 @@
+---
+/**
+ * Wrapper na diagram Mermaid — renderowany client-side przez CDN.
+ * Użycie: <MermaidDiagram>{`graph TD; A-->B`}</MermaidDiagram>
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`mermaid text-center my-4 ${className}`}>
+  <slot />
+</div>

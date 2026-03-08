@@ -1,0 +1,110 @@
+---
+interface Props {
+  title: string;
+  slideNumber: number;
+  totalSlides?: number;
+  prevSlug?: string;
+  nextSlug?: string;
+}
+
+const {
+  title,
+  slideNumber,
+  totalSlides = 21,
+  prevSlug,
+  nextSlug,
+} = Astro.props;
+
+const basePath = '/prezentacja';
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} — Prezentacja GitHub Copilot</title>
+  </head>
+  <body class="bg-gray-950 text-white min-h-screen flex flex-col font-sans antialiased">
+    <!-- Slide content -->
+    <main class="flex-1 flex items-center justify-center px-8 py-12">
+      <div class="w-full max-w-5xl">
+        <slot />
+      </div>
+    </main>
+
+    <!-- Navigation bar -->
+    <nav class="border-t border-gray-800 bg-gray-950/80 backdrop-blur px-6 py-3 flex items-center justify-between text-sm text-gray-400 shrink-0">
+      <div class="w-32">
+        {prevSlug ? (
+          <a href={`${basePath}/${prevSlug}`} class="hover:text-white transition-colors flex items-center gap-1" id="nav-prev">
+            <span>←</span> Poprzedni
+          </a>
+        ) : <span></span>}
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href={basePath} class="hover:text-white transition-colors text-xs uppercase tracking-wider">
+          Spis treści
+        </a>
+        <span class="text-gray-600">|</span>
+        <span class="tabular-nums">{slideNumber} / {totalSlides}</span>
+      </div>
+
+      <div class="w-32 text-right">
+        {nextSlug ? (
+          <a href={`${basePath}/${nextSlug}`} class="hover:text-white transition-colors flex items-center justify-end gap-1" id="nav-next">
+            Następny <span>→</span>
+          </a>
+        ) : <span></span>}
+      </div>
+    </nav>
+
+    <!-- Mermaid CDN -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script is:inline>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+          darkMode: true,
+          background: '#030712',
+          primaryColor: '#3b82f6',
+          primaryTextColor: '#f3f4f6',
+          primaryBorderColor: '#6366f1',
+          lineColor: '#6b7280',
+          secondaryColor: '#1e1b4b',
+          tertiaryColor: '#1e3a5f',
+        },
+        flowchart: { htmlLabels: true, curve: 'basis' },
+        sequence: { mirrorActors: false },
+      });
+    </script>
+
+    <!-- Keyboard navigation + notes toggle -->
+    <script is:inline>
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          const next = document.getElementById('nav-next');
+          if (next) { e.preventDefault(); next.click(); }
+        }
+        if (e.key === 'ArrowLeft') {
+          const prev = document.getElementById('nav-prev');
+          if (prev) { e.preventDefault(); prev.click(); }
+        }
+        if (e.key === 'n' || e.key === 'N') {
+          document.querySelectorAll('.notes').forEach(n => n.classList.toggle('hidden'));
+        }
+      });
+
+      // Close notes button
+      document.getElementById('close-notes')?.addEventListener('click', () => {
+        document.querySelectorAll('.notes').forEach(n => n.classList.add('hidden'));
+      });
+    </script>
+  </body>
+</html>

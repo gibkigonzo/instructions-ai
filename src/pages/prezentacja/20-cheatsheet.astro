@@ -1,0 +1,70 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Cheat sheet" slideNumber={20} prevSlug="19-workflow" nextSlug="21-summary">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      Kiedy czego użyć?
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+      <MermaidDiagram>
+        {`flowchart TD
+    Q1{"Reguła obowiązująca<br/>zawsze?"} -->|Tak| I["📋 Instruction"]
+    Q1 -->|Nie| Q2{"Powtarzalny<br/>workflow dla ludzi?"}
+    Q2 -->|Tak| P["📝 Prompt File"]
+    Q2 -->|Nie| Q3{"Reusable kompetencja<br/>z zasobami?"}
+    Q3 -->|Tak| S["🧠 Skill"]
+    Q3 -->|Nie| Q4{"Inna rola /<br/>narzędzia / granice?"}
+    Q4 -->|Tak| A["🤖 Agent"]
+    Q4 -->|Nie| D["Domyślny<br/>coding agent"]
+
+    style I fill:#1e3a5f,stroke:#3b82f6,color:#93c5fd
+    style P fill:#14532d,stroke:#22c55e,color:#86efac
+    style S fill:#581c87,stroke:#a855f7,color:#d8b4fe
+    style A fill:#78350f,stroke:#f59e0b,color:#fde68a`}
+      </MermaidDiagram>
+
+      <div class="space-y-3 text-sm">
+        <h3 class="text-lg font-semibold text-gray-300 mb-4">Struktura .github/</h3>
+        <div class="bg-gray-900 rounded-xl border border-gray-800 p-4 font-mono text-xs leading-loose">
+          <p class="text-gray-400">.github/</p>
+          <p class="text-blue-400 ml-4">copilot-instructions.md <span class="text-gray-600 font-sans">← repo-wide</span></p>
+          <p class="text-gray-400 ml-4">instructions/</p>
+          <p class="text-blue-300 ml-8">backend.instructions.md</p>
+          <p class="text-blue-300 ml-8">frontend.instructions.md</p>
+          <p class="text-blue-300 ml-8">security.instructions.md</p>
+          <p class="text-gray-400 ml-4">prompts/</p>
+          <p class="text-green-300 ml-8">feature-implementation.prompt.md</p>
+          <p class="text-green-300 ml-8">adr.prompt.md</p>
+          <p class="text-green-300 ml-8">hotfix.prompt.md</p>
+          <p class="text-green-300 ml-8">release-notes.prompt.md</p>
+          <p class="text-gray-400 ml-4">skills/</p>
+          <p class="text-purple-300 ml-8">astro-testing/SKILL.md</p>
+          <p class="text-purple-300 ml-8">code-review/SKILL.md</p>
+          <p class="text-purple-300 ml-8">ci-debugging/SKILL.md</p>
+          <p class="text-purple-300 ml-8">lint-format/SKILL.md</p>
+          <p class="text-purple-300 ml-8">security-checks/SKILL.md</p>
+          <p class="text-gray-400 ml-4">agents/</p>
+          <p class="text-amber-300 ml-8">main-dev.agent.md</p>
+          <p class="text-amber-300 ml-8">reviewer.agent.md</p>
+          <p class="text-amber-300 ml-8">security.agent.md</p>
+          <p class="text-amber-300 ml-8">ops.agent.md</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Decision tree: Reguła obowiązująca zawsze? → instruction. Powtarzalny workflow? → prompt. Kompetencja z zasobami? → skill. Inna rola? → agent.</li>
+      <li><strong>Nie trzeba używać wszystkich 4 klocków od razu</strong>. Najlepiej zacząć od instructions (najprostsze, największy ROI). Potem dodawać prompty, skille, agentów w miarę potrzeb.</li>
+      <li>Prawa strona: pełna struktura <code>.github/</code> z tego repo.</li>
+      <li>Kolor-kodowanie: niebieskie = instructions, zielone = prompts, fioletowe = skills, pomarańczowe = agents.</li>
+      <li>Sam pracujesz? Wystarczą instructions + prompty. Zespół z rolami? Dodaj agentów i skille. Duża organizacja? Agenty na poziomie org.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

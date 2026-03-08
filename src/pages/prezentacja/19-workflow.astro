@@ -1,0 +1,59 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Workflow" slideNumber={19} prevSlug="18-handoffs" nextSlug="20-cheatsheet">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      Kompletny workflow — <span class="text-green-400">/feature-implementation</span>
+    </h2>
+
+    <MermaidDiagram>
+      {`sequenceDiagram
+    actor User as 🧑‍💻 Dev
+    participant UI as VS Code Chat
+    participant Prompt as /feature-implementation
+    participant MD as main-dev
+    participant Instr as Instructions
+    participant Skills as Skills
+    participant R as reviewer
+
+    User->>UI: wybiera /feature-implementation
+    UI->>Prompt: wczytaj prompt file
+    Prompt-->>MD: agent: main-dev + scenariusz
+
+    rect rgba(59, 130, 246, 0.1)
+    MD->>Instr: repo + path + agent instructions
+    MD->>Skills: discovery → astro-testing, lint-format
+    end
+
+    MD-->>User: ❓ Pytania o wymagania
+    User->>MD: Odpowiedzi
+    MD-->>User: 📋 Plan implementacji
+    User->>MD: OK, implementuj
+    MD-->>User: ✅ Kod + testy
+
+    User->>MD: Klik "Wyślij do Review"
+    MD->>R: handoff + kontekst
+    R-->>User: 📋 Review (must-fix / should-fix)`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-500 text-sm">
+      Wszystkie klocki w akcji: <span class="text-green-400">prompt</span> startuje → <span class="text-blue-400">instructions</span> ograniczają → <span class="text-purple-400">skills</span> dostarczają HOW → <span class="text-amber-400">handoff</span> przekazuje
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Złożenie WSZYSTKICH klocków w jednym workflow, krok po kroku:</li>
+      <li><strong>1. Prompt startuje</strong>: <code>/feature-implementation</code> → prompt file kieruje do agenta <code>main-dev</code> i wstrzykuje scenariusz dialogu.</li>
+      <li><strong>2. Instructions ograniczają</strong>: <code>main-dev</code> wczytuje repo instructions (Astro, Vitest, a11y), path instructions (frontend/backend), security instructions.</li>
+      <li><strong>3. Skills dostarczają HOW</strong>: Agent dopasowuje skille — <code>astro-testing</code> do testów, <code>lint-format</code> do poprawek stylu.</li>
+      <li><strong>4. Dialog wg promptu</strong>: Prompt wymusza: „najpierw pytaj, potem planuj, potem implementuj".</li>
+      <li><strong>5. Handoff</strong>: Po implementacji klik „Wyślij do Review" → <code>reviewer</code> dostaje cały kontekst i robi formalne review.</li>
+      <li>Powtarzalne — każdy dev w zespole, używając tego samego prompta, dostaje ten sam proces.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

@@ -1,0 +1,54 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Custom Agents" slideNumber={13} prevSlug="12-skills-gallery" nextSlug="14-agents-gallery">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      <span class="text-amber-400">Custom Agents</span> — trwałe role z granicami
+    </h2>
+
+    <MermaidDiagram>
+      {`classDiagram
+    class CustomAgent {
+      +name: string
+      +description: string
+      +tools: list
+      +instructions: markdown
+      +handoffs: list~Handoff~
+    }
+
+    class Handoff {
+      +label: string
+      +agent: string
+      +prompt: string
+      +send: bool
+    }
+
+    CustomAgent "1" o-- "*" Handoff : może przekazać do`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-400 text-lg">
+      Agent = <strong class="text-white">KTO</strong> robi robotę + z jakim <strong class="text-white">dostępem</strong> + do kogo <strong class="text-white">przekazuje</strong>
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Agent to coś więcej niż prompt. To trwały profil sesji — rola + narzędzia + granice + handoffy.</li>
+      <li><strong>name</strong> — identyfikator (np. <code>main-dev</code>, <code>reviewer</code>)</li>
+      <li><strong>tools</strong> — twarde ograniczenie: agent <code>reviewer</code> ma tylko <code>read</code> + <code>search</code>, więc FIZYCZNIE nie może edytować plików</li>
+      <li><strong>handoffs</strong> — deklaratywne przejścia do innych agentów. UI pokazuje przycisk z etykietą (<code>label</code>), po kliknięciu Copilot przełącza na innego agenta z całym kontekstem.</li>
+      <li>Różnica agent vs prompt vs skill:
+        <ul class="list-disc ml-6">
+          <li>Prompt = CO robimy (jednorazowe zadanie)</li>
+          <li>Skill = JAK robimy (reusable kompetencja)</li>
+          <li>Agent = KTO robi i z JAKIMI narzędziami (rola sesji)</li>
+        </ul>
+      </li>
+      <li>Agent utrzymuje perspektywę przez CAŁĄ sesję — nie „resetuje się" jak prompt po wykonaniu.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

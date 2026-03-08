@@ -1,0 +1,82 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="4 agenci" slideNumber={14} prevSlug="13-agents" nextSlug="15-agents-why">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      4 agenci w naszym repo
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <!-- main-dev -->
+      <div class="bg-gray-900 rounded-xl border border-blue-900/50 p-4 space-y-2">
+        <h3 class="text-amber-400 font-semibold">main-dev</h3>
+        <p class="text-gray-400 text-sm">Implementacja, refactoring, debugowanie</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-green-900/30 text-green-400 text-xs px-2 py-0.5 rounded">read</span>
+          <span class="bg-green-900/30 text-green-400 text-xs px-2 py-0.5 rounded">edit</span>
+          <span class="bg-green-900/30 text-green-400 text-xs px-2 py-0.5 rounded">execute</span>
+          <span class="bg-green-900/30 text-green-400 text-xs px-2 py-0.5 rounded">search</span>
+          <span class="bg-blue-900/30 text-blue-400 text-xs px-2 py-0.5 rounded">context7/*</span>
+        </div>
+        <p class="text-gray-600 text-xs">→ reviewer, → security</p>
+      </div>
+
+      <!-- reviewer -->
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-4 space-y-2">
+        <h3 class="text-amber-400 font-semibold">reviewer</h3>
+        <p class="text-gray-400 text-sm">Formalny code review — read-only</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">read</span>
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">search</span>
+        </div>
+        <p class="text-gray-600 text-xs">→ main-dev, → security</p>
+      </div>
+
+      <!-- security -->
+      <div class="bg-gray-900 rounded-xl border border-red-900/50 p-4 space-y-2">
+        <h3 class="text-amber-400 font-semibold">security</h3>
+        <p class="text-gray-400 text-sm">Analiza bezpieczeństwa, hardening</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">read</span>
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">search</span>
+        </div>
+        <p class="text-gray-600 text-xs">→ main-dev</p>
+      </div>
+
+      <!-- ops -->
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-4 space-y-2">
+        <h3 class="text-amber-400 font-semibold">ops</h3>
+        <p class="text-gray-400 text-sm">CI/CD, monitoring, stabilność</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">read</span>
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">search</span>
+          <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded">execute</span>
+        </div>
+        <p class="text-gray-600 text-xs">→ main-dev</p>
+      </div>
+    </div>
+
+    <MermaidDiagram class="max-w-md mx-auto">
+      {`graph LR
+    MD["main-dev<br/><small>✏️ zapis</small>"] <-->|"review"| R["reviewer<br/><small>👁️ read-only</small>"]
+    MD <-->|"security"| S["security<br/><small>🔒 read-only</small>"]
+    R -->|"security"| S
+    O["ops<br/><small>⚙️ read-only</small>"] -->|"fix"| MD`}
+    </MermaidDiagram>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li><strong>main-dev</strong> — JEDYNY agent z prawem zapisu (<code>edit</code> + <code>execute</code>). Ma też <code>context7/*</code> — MCP serwer pobierający aktualną dokumentację bibliotek na żądanie.</li>
+      <li><strong>reviewer</strong> — read-only. Nie może edytować kodu — tylko sugerować poprawki w formacie must-fix/should-fix/nice-to-have. Handoff do <code>main-dev</code> i do <code>security</code>.</li>
+      <li><strong>security</strong> — read-only, nigdy nie obniża zabezpieczeń. Handoff do <code>main-dev</code> żeby ten zaaplikował rekomendacje.</li>
+      <li><strong>ops</strong> — read-only, nie dotyka logiki biznesowej. Handoff do <code>main-dev</code> gdy problem wymaga zmiany w kodzie.</li>
+      <li>Diagram na dole: graf handoffów. <code>main-dev</code> jest hubem — wszystko wraca do niego gdy trzeba coś zmienić.</li>
+      <li>Brak <code>edit</code> i <code>execute</code> to TWARDA granica, nie „prośba". Agent fizycznie nie ma narzędzia do zapisu.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

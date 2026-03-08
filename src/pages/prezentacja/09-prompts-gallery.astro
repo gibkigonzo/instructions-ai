@@ -1,0 +1,61 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+---
+
+<PresentationLayout title="Galeria Promptów" slideNumber={9} prevSlug="08-prompts-anatomy" nextSlug="10-skills">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      4 prompty w naszym repo
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <div class="flex items-center gap-2">
+          <code class="text-green-400 font-semibold">/feature-implementation</code>
+        </div>
+        <p class="text-gray-400 text-sm">Pełna implementacja nowej funkcji — user wpisuje opis w polu, reszta wg scenariusza.</p>
+        <p class="text-gray-600 text-xs">agent: main-dev · argument-hint: "Krótki opis funkcji…"</p>
+      </div>
+
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <div class="flex items-center gap-2">
+          <code class="text-green-400 font-semibold">/adr</code>
+        </div>
+        <p class="text-gray-400 text-sm">Architecture Decision Record — interview → generacja dokumentu w formacie Status/Kontekst/Decyzja/Alternatywy/Konsekwencje.</p>
+        <p class="text-gray-600 text-xs">agent: main-dev</p>
+      </div>
+
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <div class="flex items-center gap-2">
+          <code class="text-green-400 font-semibold">/hotfix</code>
+        </div>
+        <p class="text-gray-400 text-sm">Krytyczny bugfix — zbierz logi i opis → minimalna poprawka → test + <strong class="text-gray-300">plan rollbacku</strong>.</p>
+        <p class="text-gray-600 text-xs">agent: main-dev</p>
+      </div>
+
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 space-y-2">
+        <div class="flex items-center gap-2">
+          <code class="text-green-400 font-semibold">/release-notes</code>
+        </div>
+        <p class="text-gray-400 text-sm">Generowanie release notes — PR-y → grupowanie → wersja krótka (changelog) + długa (blog post).</p>
+        <p class="text-gray-600 text-xs">agent: main-dev</p>
+      </div>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm">
+      Każdy prompt definiuje <strong class="text-gray-300">sekwencję kroków dialogu</strong> — najpierw pytaj, potem generuj
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>4 prompty, 4 powtarzalne procesy. Każdy wymusza określony format rozmowy.</li>
+      <li><strong>/feature-implementation</strong> — ma <code>argument-hint</code> — VS Code od razu pyta „co chcesz zaimplementować?", wpisany tekst trafia do <code>{'{{ input }}'}</code>.</li>
+      <li><strong>/adr</strong> — prowadzi interview (pytania o kontekst, opcje, ograniczenia) zanim wygeneruje dokument. Nowy dev nie musi znać formatu ADR.</li>
+      <li><strong>/hotfix</strong> — wymusza zbieranie logów/stack trace + plan rollbacku. Nie pozwala na „ślepe" poprawki.</li>
+      <li><strong>/release-notes</strong> — generuje dwie wersje: krótki changelog i dłuższą formę do bloga. Pilnuje, żeby nie ujawniać wrażliwych szczegółów.</li>
+      <li>Wszystkie kierują do <code>main-dev</code> — ale mogłyby kierować do różnych agentów.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

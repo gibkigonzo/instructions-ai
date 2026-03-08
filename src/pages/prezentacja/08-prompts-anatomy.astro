@@ -1,0 +1,55 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+---
+
+<PresentationLayout title="Anatomia Prompt File" slideNumber={8} prevSlug="07-prompts" nextSlug="09-prompts-gallery">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      Anatomia <span class="text-green-400">prompt file</span>
+    </h2>
+
+    <div class="bg-gray-900 rounded-xl border border-gray-800 p-6 text-sm md:text-base font-mono leading-relaxed overflow-x-auto">
+      <div class="text-gray-500 mb-1">---</div>
+      <div><span class="text-blue-400">name:</span> <span class="text-green-300">feature-implementation</span></div>
+      <div><span class="text-blue-400">description:</span> <span class="text-gray-300">"Pełny proces implementacji nowej funkcji"</span></div>
+      <div><span class="text-blue-400">agent:</span> <span class="text-amber-300">main-dev</span>
+        <span class="text-gray-600 ml-4">← kieruje do konkretnego agenta</span>
+      </div>
+      <div><span class="text-blue-400">argument-hint:</span> <span class="text-gray-300">"Krótki opis funkcji, np. 'dark mode toggle'"</span>
+        <span class="text-gray-600 ml-4">← podpowiedź w polu input</span>
+      </div>
+      <div class="text-gray-500 mb-4">---</div>
+
+      <div class="text-gray-300 space-y-2">
+        <p>Pomóż mi zaimplementować następującą funkcję:</p>
+        <p class="text-amber-300">**{'{{ input }}'}**</p>
+        <p class="text-gray-600 text-xs ml-4">↑ {'{{ input }}'} = to, co user wpisze w polu</p>
+        <p class="text-gray-500 mt-3">## Kroki:</p>
+        <p><span class="text-green-400">1.</span> Zadaj pytania doprecyzowujące <span class="text-gray-600">← dialog przed kodem</span></p>
+        <p class="text-gray-500 ml-4">— cel biznesowy, zachowanie, wymagania</p>
+        <p><span class="text-green-400">2.</span> Zaproponuj plan zmian</p>
+        <p class="text-gray-500 ml-4">— pliki, komponenty, endpointy, testy</p>
+        <p><span class="text-green-400">3.</span> Implementuj krokami</p>
+        <p class="text-gray-500 ml-4">— dane → UI → testy</p>
+        <p><span class="text-green-400">4.</span> Podsumuj + wypisz TODO</p>
+      </div>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Prompt file to plik Markdown z frontmatterem YAML i treścią body.</li>
+      <li><strong>Frontmatter</strong>:
+        <ul class="list-disc ml-6 mt-1">
+          <li><code>name</code> — nazwa widoczna w pickerze UI (<code>/feature-implementation</code>)</li>
+          <li><code>description</code> — podpowiedź w UI</li>
+          <li><code>agent</code> — kieruje do agenta <code>main-dev</code>. Bez tego pola użyty będzie domyślny coding agent.</li>
+        </ul>
+      </li>
+      <li><strong>Body</strong> = scenariusz dialogu. Krok 1 wymusza „najpierw pytaj, potem generuj". Agent nie rzuca się od razu do kodu — najpierw zbiera kontekst.</li>
+      <li>Krok 4 = podsumowanie + TODO. Wymusza samodokumentację zmian.</li>
+      <li>Ten sam prompt daje powtarzalny proces niezależnie od tego, kto go użyje w zespole.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

@@ -1,0 +1,62 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="4 klocki" slideNumber={3} prevSlug="02-problem" nextSlug="04-instructions">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      4 klocki customizacji
+    </h2>
+
+    <MermaidDiagram>
+      {`graph TD
+    U["🧑‍💻 Użytkownik"] -->|"wybiera /prompt"| P["📝 Prompt File"]
+    U -->|"pisze wiadomość"| A["🤖 Agent"]
+    P -->|"treść jako user prompt"| A
+
+    subgraph "Always-on"
+      I["📋 Instructions<br/><small>Reguły obowiązujące zawsze</small>"]
+    end
+
+    subgraph "On-demand"
+      S["🧠 Skills<br/><small>Pakiety kompetencji</small>"]
+    end
+
+    A --> I
+    A -->|"auto-discovery"| S
+    A --> O["✅ Odpowiedź"]`}
+    </MermaidDiagram>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+      <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+        <p class="text-blue-400 font-semibold">Instructions</p>
+        <p class="text-gray-400 mt-1">Reguły — zawsze aktywne</p>
+      </div>
+      <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+        <p class="text-green-400 font-semibold">Prompts</p>
+        <p class="text-gray-400 mt-1">Komendy — ręczne wywołanie</p>
+      </div>
+      <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+        <p class="text-purple-400 font-semibold">Skills</p>
+        <p class="text-gray-400 mt-1">Kompetencje — auto‑wykrywane</p>
+      </div>
+      <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+        <p class="text-amber-400 font-semibold">Agents</p>
+        <p class="text-gray-400 mt-1">Role — sesja z granicami</p>
+      </div>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>GitHub daje 4 mechanizmy customizacji Copilota. Każdy rozwiązuje inny problem.</li>
+      <li><strong>Instructions</strong> — pasywne reguły, obowiązują zawsze, nie trzeba ich wywoływać.</li>
+      <li><strong>Prompts</strong> — nazwane komendy, startują konkretny workflow.</li>
+      <li><strong>Skills</strong> — pakiety wiedzy. Agent sam po nie sięga, gdy uzna że pasują do zadania.</li>
+      <li><strong>Agents</strong> — trwałe role z narzędziami i granicami. Definiują KTO robi robotę i z jakim dostępem.</li>
+      <li>Omawiane od najprostszego do najbardziej złożonego.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

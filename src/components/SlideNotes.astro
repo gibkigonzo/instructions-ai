@@ -1,0 +1,15 @@
+---
+/**
+ * Notatki — ukryte domyślnie, widoczne po naciśnięciu klawisza "N".
+ */
+---
+
+<aside class="notes hidden fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur border-t border-gray-700 p-6 max-h-[40vh] overflow-y-auto z-50 text-sm text-gray-300 leading-relaxed">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Notatki</span>
+      <button id="close-notes" class="text-gray-500 hover:text-white text-xs cursor-pointer">[N] zamknij</button>
+    </div>
+    <slot />
+  </div>
+</aside>

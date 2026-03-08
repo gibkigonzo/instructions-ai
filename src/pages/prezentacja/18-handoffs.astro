@@ -1,0 +1,69 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Handoffy" slideNumber={18} prevSlug="17-pipeline" nextSlug="19-workflow">
+  <div class="space-y-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">
+      <span class="text-amber-400">Handoffy</span> — Build → Review → Security
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+      <MermaidDiagram>
+        {`sequenceDiagram
+    actor User as 🧑‍💻 Dev
+    participant MD as main-dev
+    participant R as reviewer
+    participant S as security
+
+    User->>MD: Implementuj feature
+    MD-->>User: ✅ Kod gotowy
+
+    User->>MD: Klik "Wyślij do Review"
+    MD->>R: handoff + kontekst
+    R-->>User: 📋 Raport review
+
+    User->>R: Klik "Sprawdź bezpieczeństwo"
+    R->>S: handoff + kontekst
+    S-->>User: 🔒 Raport security
+
+    User->>S: Klik "Wróć do implementacji"
+    S->>MD: handoff + kontekst
+    MD-->>User: 🔧 Poprawki zastosowane`}
+      </MermaidDiagram>
+
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-gray-300">Fragment main-dev.agent.md</h3>
+        <div class="bg-gray-900 rounded-xl border border-gray-800 p-4 text-sm font-mono leading-relaxed">
+          <p class="text-gray-500">handoffs:</p>
+          <p class="ml-2"><span class="text-blue-400">- label:</span> <span class="text-gray-300">"Wyślij do Review"</span></p>
+          <p class="ml-4"><span class="text-blue-400">agent:</span> <span class="text-amber-300">reviewer</span></p>
+          <p class="ml-4"><span class="text-blue-400">prompt:</span> <span class="text-gray-400">"Zrób code review..."</span></p>
+          <p class="ml-4"><span class="text-blue-400">send:</span> <span class="text-green-300">false</span></p>
+          <p class="mt-2 ml-2"><span class="text-blue-400">- label:</span> <span class="text-gray-300">"Sprawdź bezpieczeństwo"</span></p>
+          <p class="ml-4"><span class="text-blue-400">agent:</span> <span class="text-amber-300">security</span></p>
+          <p class="ml-4"><span class="text-blue-400">prompt:</span> <span class="text-gray-400">"Przeprowadź przegląd..."</span></p>
+        </div>
+
+        <div class="bg-gray-900/50 rounded-lg p-3 text-sm text-gray-400 space-y-1">
+          <p><strong class="text-gray-300">label</strong> — tekst przycisku w UI</p>
+          <p><strong class="text-gray-300">agent</strong> — docelowy agent</p>
+          <p><strong class="text-gray-300">prompt</strong> — pierwsza wiadomość</p>
+          <p><strong class="text-gray-300">send</strong> — auto-wysyłka (false = user potwierdza)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Handoff to deklaratywne, nazwane przejście między agentami. Definiowane w frontmatterze agenta.</li>
+      <li>Flow: user pracuje z <code>main-dev</code> → klika „Wyślij do Review" → Copilot przełącza na <code>reviewer</code> z całym kontekstem rozmowy + predefiniowany prompt jako pierwsza wiadomość.</li>
+      <li><strong>Cały kontekst przechodzi</strong> — reviewer widzi plan, implementację, dokonane zmiany. Nie trzeba nic kopiować.</li>
+      <li><code>send: false</code> — user widzi przycisk i predefiniowany prompt, ale musi kliknąć „wyślij". <code>send: true</code> wysyła automatycznie.</li>
+      <li>Różnica handoff vs subagent: handoff = pełne przejęcie sesji (zmiana agenta). Subagent = tymczasowe podzadanie w izolacji.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>

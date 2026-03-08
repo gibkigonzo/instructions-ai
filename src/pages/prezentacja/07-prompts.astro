@@ -1,0 +1,47 @@
+---
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+---
+
+<PresentationLayout title="Prompt Files" slideNumber={7} prevSlug="06-instructions-path" nextSlug="08-prompts-anatomy">
+  <div class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center">
+      <span class="text-green-400">Prompt Files</span> — nazwane komendy
+    </h2>
+
+    <MermaidDiagram>
+      {`sequenceDiagram
+    actor User as 🧑‍💻 Użytkownik
+    participant UI as VS Code Chat
+    participant Prompt as .github/prompts/*.prompt.md
+    participant Agent as 🤖 Agent
+
+    User->>UI: wybiera /feature-implementation
+    UI->>Prompt: wczytaj treść prompt file
+    Prompt-->>UI: scenariusz dialogu + format
+    UI->>Agent: user input + treść promptu
+    Agent-->>UI: prowadzi dialog wg scenariusza
+    UI-->>User: wynik (plan, kod, testy)`}
+    </MermaidDiagram>
+
+    <p class="text-center text-gray-400 text-lg">
+      <code class="text-green-400">/nazwa</code> w czacie → powtarzalny workflow, za każdym razem tak samo
+    </p>
+  </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Prompt file to nazwana, wielorazowa komenda. Wywołuje się ją <code>/nazwa</code> w czacie — startuje określony dialog.</li>
+      <li><strong>Kluczowa różnica vs instrukcje</strong>:
+        <ul class="list-disc ml-6 mt-1">
+          <li>Instrukcja = <em>system prompt</em> — obowiązuje zawsze, w tle</li>
+          <li>Prompt = <em>user prompt</em> — jednorazowy start, gdy go wywołasz</li>
+        </ul>
+      </li>
+      <li>Analogia: instrukcja = regulamin firmy (obowiązuje zawsze). Prompt = formularz zamówienia (wypełniasz gdy potrzebujesz).</li>
+      <li>Prompt może określić, który agent obsłuży zadanie (pole <code>agent:</code> w frontmatterze).</li>
+      <li>Prompt definiuje scenariusz dialogu — „najpierw zadaj pytania, dopiero potem generuj" — co daje powtarzalność.</li>
+    </ul>
+  </SlideNotes>
+</PresentationLayout>
