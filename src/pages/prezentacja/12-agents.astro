@@ -1,7 +1,6 @@
 ---
 import PresentationLayout from '../../layouts/PresentationLayout.astro';
 import SlideNotes from '../../components/SlideNotes.astro';
-import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
 <PresentationLayout title="Custom Agents" slideNumber={13} prevSlug="11-skills-gallery" nextSlug="13-agents-gallery">
@@ -10,24 +9,23 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <span class="text-amber-400">Custom Agents</span> — trwałe role z granicami
     </h2>
 
-    <MermaidDiagram>
-      {`classDiagram
-    class CustomAgent {
-      +name: string
-      +description: string
-      +tools: list
-      +handoffs: list~Handoff~
-    }
-
-    class Handoff {
-      +label: string
-      +agent: string
-      +prompt: string
-      +send: bool
-    }
-
-    CustomAgent "1" o-- "*" Handoff : może przekazać do`}
-    </MermaidDiagram>
+    <div class="bg-gray-900 rounded-xl border border-gray-800 p-5 md:p-6 text-sm md:text-base font-mono leading-relaxed overflow-x-auto">
+      <div class="text-gray-500 mb-2">#file:reviewer.agent.md</div>
+      <div class="text-gray-500">---</div>
+      <div><span class="text-blue-400">name:</span> <span class="text-amber-300">reviewer</span></div>
+      <div><span class="text-blue-400">description:</span> <span class="text-gray-300">"Agent do formalnego code review i analizy zmian."</span></div>
+      <div><span class="text-blue-400">tools:</span></div>
+      <div class="ml-4 text-green-300">- read</div>
+      <div class="ml-4 text-green-300">- search</div>
+      <div><span class="text-blue-400">handoffs:</span></div>
+      <div class="ml-4 text-gray-300">- label: "Wróć do implementacji"</div>
+      <div class="ml-8 text-gray-400">agent: main-dev</div>
+      <div class="ml-8 text-gray-400">send: false</div>
+      <div class="ml-4 text-gray-300">- label: "Sprawdź bezpieczeństwo"</div>
+      <div class="ml-8 text-gray-400">agent: security</div>
+      <div class="ml-8 text-gray-400">send: false</div>
+      <div class="text-gray-500 mt-1">---</div>
+    </div>
 
     <p class="text-center text-gray-400 text-lg">
       Agent = <strong class="text-white">KTO</strong> robi robotę + z jakim <strong class="text-white">dostępem</strong> + do kogo <strong class="text-white">przekazuje</strong>
