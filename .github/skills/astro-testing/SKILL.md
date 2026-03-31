@@ -1,7 +1,7 @@
 ---
 name: astro-testing
 description: "Pisanie testów dla komponentów i logiki w projekcie Astro z użyciem Vitest."
-user-invokable: true
+user-invocable: true
 argument-hint: "[komponent, endpoint lub funkcja do przetestowania]"
 ---
 

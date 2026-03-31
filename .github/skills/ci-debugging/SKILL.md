@@ -1,7 +1,7 @@
 ---
 name: ci-debugging
 description: "Analiza i debugowanie problemów z CI/CD (build, testy, deploy)."
-user-invokable: true
+user-invocable: true
 argument-hint: "[logi, opis joba, nazwa pipeline'u]"
 ---
 

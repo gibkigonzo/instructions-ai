@@ -4,7 +4,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="Custom Agents" slideNumber={13} prevSlug="12-skills-gallery" nextSlug="14-agents-gallery">
+<PresentationLayout title="Custom Agents" slideNumber={13} prevSlug="11-skills-gallery" nextSlug="13-agents-gallery">
   <div class="space-y-8">
     <h2 class="text-3xl md:text-4xl font-bold text-center">
       <span class="text-amber-400">Custom Agents</span> — trwałe role z granicami
@@ -16,7 +16,6 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       +name: string
       +description: string
       +tools: list
-      +instructions: markdown
       +handoffs: list~Handoff~
     }
 
@@ -44,7 +43,7 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <li>Różnica agent vs prompt vs skill:
         <ul class="list-disc ml-6">
           <li>Prompt = CO robimy (jednorazowe zadanie)</li>
-          <li>Skill = JAK robimy (reusable kompetencja)</li>
+          <li>Skill = JAK robimy (używana wielokrotnie kompetencja)</li>
           <li>Agent = KTO robi i z JAKIMI narzędziami (rola sesji)</li>
         </ul>
       </li>

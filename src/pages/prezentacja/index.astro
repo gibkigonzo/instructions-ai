@@ -1,126 +1,35 @@
 ---
 import PresentationLayout from '../../layouts/PresentationLayout.astro';
+import SlideNotes from '../../components/SlideNotes.astro';
 ---
 
-<PresentationLayout title="Spis treści" slideNumber={0} totalSlides={21} nextSlug="01-intro">
-  <div class="space-y-8">
-    <h1 class="text-3xl md:text-4xl font-bold text-center">
-      Customizacja GitHub Copilot
+<PresentationLayout title="Tytuł" slideNumber={1} nextSlug="01-problem">
+  <div class="text-center space-y-8">
+    <p class="text-blue-400 text-sm uppercase tracking-widest font-semibold">Prezentacja</p>
+
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+      Instructions, Prompts,<br />Skills i Agents
     </h1>
-    <p class="text-center text-gray-400">Instructions · Prompts · Skills · Agents</p>
 
-    <div class="max-w-2xl mx-auto space-y-6">
-      <!-- Intro -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-gray-500 mb-2">Otwarcie</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/01-intro" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">01</span> Tytuł
-          </a></li>
-          <li><a href="/prezentacja/02-problem" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">02</span> Problem — dlaczego customizacja?
-          </a></li>
-          <li><a href="/prezentacja/03-overview" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">03</span> 4 klocki customizacji
-          </a></li>
-        </ul>
-      </div>
+    <p class="text-xl md:text-2xl text-gray-400">
+      Customizacja GitHub Copilot w praktyce
+    </p>
 
-      <!-- Instructions -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-blue-400 mb-2">Custom Instructions</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/04-instructions" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">04</span> Koncept — reguły „always-on"
-          </a></li>
-          <li><a href="/prezentacja/05-instructions-repo" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">05</span> Repo-wide instructions
-          </a></li>
-          <li><a href="/prezentacja/06-instructions-path" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">06</span> Path-scoped instructions
-          </a></li>
-        </ul>
-      </div>
-
-      <!-- Prompts -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-green-400 mb-2">Prompt Files</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/07-prompts" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">07</span> Koncept — nazwane komendy
-          </a></li>
-          <li><a href="/prezentacja/08-prompts-anatomy" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">08</span> Anatomia prompt file
-          </a></li>
-          <li><a href="/prezentacja/09-prompts-gallery" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">09</span> Galeria promptów
-          </a></li>
-        </ul>
-      </div>
-
-      <!-- Skills -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-purple-400 mb-2">Agent Skills</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/10-skills" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">10</span> Koncept — pakiety kompetencji
-          </a></li>
-          <li><a href="/prezentacja/11-skills-example" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">11</span> Anatomia SKILL.md + auto-discovery
-          </a></li>
-          <li><a href="/prezentacja/12-skills-gallery" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">12</span> 5 skilli w repo
-          </a></li>
-        </ul>
-      </div>
-
-      <!-- Agents -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-amber-400 mb-2">Custom Agents</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/13-agents" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">13</span> Koncept — trwałe role
-          </a></li>
-          <li><a href="/prezentacja/14-agents-gallery" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">14</span> 4 agenci w repo + graf handoffów
-          </a></li>
-          <li><a href="/prezentacja/15-agents-why" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">15</span> Po co agenci?
-          </a></li>
-          <li><a href="/prezentacja/16-agents-instructions" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">16</span> Agent jako dispatcher instrukcji
-          </a></li>
-        </ul>
-      </div>
-
-      <!-- Pipeline -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Pełny Pipeline</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/17-pipeline" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">17</span> Od pytania do odpowiedzi
-          </a></li>
-          <li><a href="/prezentacja/18-handoffs" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">18</span> Handoffy — Build → Review → Security
-          </a></li>
-          <li><a href="/prezentacja/19-workflow" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">19</span> Kompletny workflow
-          </a></li>
-        </ul>
-      </div>
-
-      <!-- Summary -->
-      <div>
-        <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Podsumowanie</h2>
-        <ul class="space-y-1">
-          <li><a href="/prezentacja/20-cheatsheet" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">20</span> Cheat sheet — kiedy czego użyć
-          </a></li>
-          <li><a href="/prezentacja/21-summary" class="text-gray-300 hover:text-white transition-colors flex items-center gap-3">
-            <span class="text-gray-600 text-sm tabular-nums w-6">21</span> Podsumowanie + Q&A
-          </a></li>
-        </ul>
-      </div>
+    <div class="flex items-center justify-center gap-6 text-sm text-gray-500 pt-8">
+      <span>VS Code</span>
+      <span class="text-gray-700">·</span>
+      <span>GitHub.com</span>
+      <span class="text-gray-700">·</span>
+      <span>CLI</span>
     </div>
   </div>
+
+  <SlideNotes>
+    <ul class="list-disc ml-4 mt-2 space-y-1">
+      <li>Prezentacja pokazuje, jak spersonalizować GitHub Copilot, żeby rozumiał konkretny projekt, konwencje i procesy zespołu.</li>
+      <li>Omawiane są 4 klocki customizacji — od prostych reguł po pełne role z handoffami między agentami.</li>
+      <li>Na końcu: cheat sheet „kiedy czego użyć" + Q&A.</li>
+      <li>Wszystko na przykładzie realnego repo Astro z instrukcjami, agentami i skillami.</li>
+    </ul>
+  </SlideNotes>
 </PresentationLayout>

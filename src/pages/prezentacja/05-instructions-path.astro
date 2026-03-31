@@ -3,10 +3,10 @@ import PresentationLayout from '../../layouts/PresentationLayout.astro';
 import SlideNotes from '../../components/SlideNotes.astro';
 ---
 
-<PresentationLayout title="Path-scoped Instructions" slideNumber={6} prevSlug="05-instructions-repo" nextSlug="07-prompts">
+<PresentationLayout title="Path-scoped Instructions" slideNumber={6} prevSlug="04-instructions-repo" nextSlug="06-prompts">
   <div class="space-y-6">
     <h2 class="text-2xl md:text-3xl font-bold text-center">
-      <span class="text-blue-400">Path-scoped Instructions</span> — reguły dla konkretnych plików
+      <span class="text-blue-400">Path-scoped Instructions</span> — przykłady reguł dla konkretnych plików
     </h2>
 
     <div class="grid md:grid-cols-3 gap-4">
@@ -27,7 +27,6 @@ import SlideNotes from '../../components/SlideNotes.astro';
         <h3 class="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-3">frontend.instructions.md</h3>
         <p class="text-xs text-gray-500 mb-3">→ src/components/**, *.astro</p>
         <ul class="text-sm text-gray-300 space-y-2">
-          <li>▸ Minimalizuj JS w przeglądarce</li>
           <li>▸ Islands tylko gdy potrzebne</li>
           <li>▸ Semantyczny HTML + ARIA</li>
           <li>▸ Małe, fokusowe komponenty</li>
@@ -56,7 +55,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
     <ul class="list-disc ml-4 mt-2 space-y-1">
       <li>Path-scoped instructions ładują się automatycznie, ale TYLKO gdy edytowane pliki pasują do glob pattern.</li>
       <li><strong>Backend</strong> — aktywne przy plikach <code>src/pages/api/**</code>. Copilot waliduje inputy, nie ufa klientowi, zwraca sensowne kody HTTP.</li>
-      <li><strong>Frontend</strong> — dla plików <code>.astro</code> i komponentów. Minimalizacja JS, islands, a11y.</li>
+      <li><strong>Frontend</strong> — dla plików <code>.astro</code> i komponentów. islands, a11y.</li>
       <li><strong>Security</strong> — ZAWSZE najwyższy priorytet. Gdy jest konflikt z innymi instrukcjami, security wygrywa.</li>
       <li>Backend dev i frontend dev pracują w tym samym repo, ale Copilot dostaje inne reguły w zależności od edytowanych plików.</li>
     </ul>

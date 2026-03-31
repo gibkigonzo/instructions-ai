@@ -3,10 +3,10 @@ import PresentationLayout from '../../layouts/PresentationLayout.astro';
 import SlideNotes from '../../components/SlideNotes.astro';
 ---
 
-<PresentationLayout title="Galeria Skilli" slideNumber={12} prevSlug="11-skills-example" nextSlug="13-agents">
+<PresentationLayout title="Galeria Skilli" slideNumber={12} prevSlug="10-skills-example" nextSlug="12-agents">
   <div class="space-y-6">
     <h2 class="text-2xl md:text-3xl font-bold text-center">
-      5 skilli w naszym repo
+      przykładowe skille
     </h2>
 
     <div class="overflow-x-auto">
@@ -42,7 +42,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
             <td class="py-3 px-4 font-mono text-yellow-400">lint-format</td>
             <td class="py-3 px-4">Naprawa lintingu/formatowania</td>
             <td class="py-3 px-4 text-center text-red-400">✗</td>
-            <td class="py-3 px-4 text-gray-500">main-dev <span class="text-yellow-500 text-xs">(auto)</span></td>
+            <td class="py-3 px-4 text-gray-500">main-dev</td>
           </tr>
           <tr>
             <td class="py-3 px-4 font-mono text-purple-400">security-checks</td>
@@ -61,11 +61,11 @@ import SlideNotes from '../../components/SlideNotes.astro';
 
   <SlideNotes>
     <ul class="list-disc ml-4 mt-2 space-y-1">
-      <li>5 skilli — 4 user-invokable, 1 wyłącznie automatyczny.</li>
-      <li><strong>astro-testing</strong> — procedura: zidentyfikuj publiczny surface → wypisz przypadki (bazowy, edge, error) → zaproponuj lokalizację → wygeneruj testy. Działa z Vitest.</li>
+      <li>5 skilli — 4 user-invocable, 1 wyłącznie automatyczny.</li>
+      <li><strong>astro-testing</strong> — procedura: zidentyfikuj publiczny kontrakt → wypisz przypadki (bazowy, edge, error) → zaproponuj lokalizację → wygeneruj testy.</li>
       <li><strong>ci-debugging</strong> — używany przez <code>main-dev</code> i <code>ops</code>. Analiza logów, identyfikacja: test failure vs build error vs environment issue.</li>
-      <li><strong>code-review</strong> — ma folder <code>examples/</code> z przykładami (Level 3). Używany zarówno do self-review (<code>main-dev</code>) jak i formalnego review (<code>reviewer</code>).</li>
-      <li><strong>lint-format</strong> — <code>user-invokable: false</code>. Agent sięga po niego automatycznie gdy widzi błędy lintingu. Nie wyłącza reguł ESLint bez uzasadnienia.</li>
+      <li><strong>code-review</strong> — Używany zarówno do self-review (<code>main-dev</code>) jak i formalnego review (<code>reviewer</code>).</li>
+      <li><strong>lint-format</strong> — <code>user-invocable: false</code>. Agent sięga po niego automatycznie gdy widzi błędy lintingu.</li>
       <li><strong>security-checks</strong> — sprawdza frontend (XSS), backend (walidacja, auth), config (nagłówki, env). Priorytetyzuje: high/medium/low.</li>
       <li>Ten sam skill może być używany przez różnych agentów w różnych kontekstach.</li>
     </ul>

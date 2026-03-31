@@ -1,7 +1,7 @@
 ---
 name: security-checks
 description: "Przegląd bezpieczeństwa zmian w kodzie i konfiguracji."
-user-invokable: true
+user-invocable: true
 argument-hint: "[pliki / fragmenty do sprawdzenia]"
 ---
 

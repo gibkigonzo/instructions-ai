@@ -1,7 +1,7 @@
 ---
 name: lint-format
 description: "Naprawa błędów lintingu i formatowania zgodnie z konfiguracją ESLint/Prettier w tym projekcie."
-user-invokable: false
+user-invocable: false
 ---
 
 ## Zasady

@@ -1,5 +1,7 @@
 # Astro Starter Kit: Basics
 
+App: https://cosmic-sopapillas-a60a95.netlify.app/
+
 ```sh
 npm create astro@latest -- --template basics
 ```

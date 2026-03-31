@@ -4,10 +4,10 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="4 klocki" slideNumber={3} prevSlug="02-problem" nextSlug="04-instructions">
+<PresentationLayout title="Główne elementy" slideNumber={3} prevSlug="01-problem" nextSlug="03-instructions">
   <div class="space-y-8">
     <h2 class="text-3xl md:text-4xl font-bold text-center">
-      4 klocki customizacji
+      Główne elementy
     </h2>
 
     <MermaidDiagram>
@@ -56,7 +56,6 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <li><strong>Prompts</strong> — nazwane komendy, startują konkretny workflow.</li>
       <li><strong>Skills</strong> — pakiety wiedzy. Agent sam po nie sięga, gdy uzna że pasują do zadania.</li>
       <li><strong>Agents</strong> — trwałe role z narzędziami i granicami. Definiują KTO robi robotę i z jakim dostępem.</li>
-      <li>Omawiane od najprostszego do najbardziej złożonego.</li>
     </ul>
   </SlideNotes>
 </PresentationLayout>

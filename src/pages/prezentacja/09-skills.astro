@@ -4,7 +4,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="Agent Skills" slideNumber={10} prevSlug="09-prompts-gallery" nextSlug="11-skills-example">
+<PresentationLayout title="Agent Skills" slideNumber={10} prevSlug="08-prompts-gallery" nextSlug="10-skills-example">
   <div class="space-y-8">
     <h2 class="text-3xl md:text-4xl font-bold text-center">
       <span class="text-purple-400">Agent Skills</span> — pakiety kompetencji
@@ -20,7 +20,7 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
         Res["📁 Level 3: Zasoby<br/><small>skrypty, przykłady</small>"]
     end
 
-    Agent -->|"discovery — czyta zawsze"| Meta
+    Agent -->|"discovery — czyta zawsze name + description"| Meta
     Agent -->|"jeśli pasuje do zadania"| Body
     Agent -->|"jeśli potrzebne"| Res`}
     </MermaidDiagram>

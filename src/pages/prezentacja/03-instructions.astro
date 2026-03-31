@@ -4,7 +4,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="Custom Instructions" slideNumber={4} prevSlug="03-overview" nextSlug="05-instructions-repo">
+<PresentationLayout title="Custom Instructions" slideNumber={4} prevSlug="02-overview" nextSlug="04-instructions-repo">
   <div class="space-y-8">
     <h2 class="text-3xl md:text-4xl font-bold text-center">
       <span class="text-blue-400">Custom Instructions</span> — reguły „always-on"
@@ -19,7 +19,7 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
         Personal["👤 Personal / Org instructions"]
         RepoInstr["📦 .github/copilot-instructions.md<br/><small>cały repo</small>"]
         PathInstr["📂 .github/instructions/*.instructions.md<br/><small>konkretne ścieżki</small>"]
-        AgentInstr["🤖 .github/agents/AGENT.md<br/><small>instrukcje agenta</small>"]
+        AgentInstr["🤖 ./AGENT.md<br/><small>instrukcje agenta</small>"]
     end
 
     Agent --> Personal
@@ -41,10 +41,9 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
           <li><strong>Personal/Org</strong> — ustawienia na GitHubie, obowiązują we wszystkich repo</li>
           <li><strong>Repo-wide</strong> — <code>.github/copilot-instructions.md</code> — dla całego repozytorium</li>
           <li><strong>Path-scoped</strong> — <code>.github/instructions/*.instructions.md</code> — ładowane tylko gdy edytowane pliki pasują do glob pattern (np. <code>src/pages/api/**</code>)</li>
-          <li><strong>Agent-specific</strong> — treść w <code>.agent.md</code> — obowiązuje tylko danego agenta</li>
+          <li><strong>Agent-specific</strong> — treść w <code>./AGENT.md</code> — obowiązuje głównego agenta</li>
         </ol>
       </li>
-      <li>Security instructions mają najwyższy priorytet — overridują inne gdy jest konflikt.</li>
       <li>Analogia: instructions = „kodeks postępowania". Obowiązuje wszystkich, nie trzeba go codziennie otwierać.</li>
     </ul>
   </SlideNotes>

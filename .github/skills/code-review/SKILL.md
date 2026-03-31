@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: "Prowadzenie pełnego code review zmian w repozytorium."
-user-invokable: true
+user-invocable: true
 argument-hint: "[lista plików / opis PR / diff]"
 ---
 

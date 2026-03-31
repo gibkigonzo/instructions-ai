@@ -4,7 +4,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="Pełny pipeline" slideNumber={17} prevSlug="16-agents-instructions" nextSlug="18-handoffs">
+<PresentationLayout title="Pełny pipeline" slideNumber={15} prevSlug="13-agents-gallery" nextSlug="15-handoffs">
   <div class="space-y-6">
     <h2 class="text-2xl md:text-3xl font-bold text-center">
       Pełny pipeline — od pytania do odpowiedzi
@@ -47,7 +47,6 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <li><strong>Krok 1 — Kontekst systemowy</strong>: Agent automatycznie wczytuje WSZYSTKIE instrukcje w zasięgu. Personal/org → repo-wide → path-scoped → własne instrukcje agenta.</li>
       <li><strong>Krok 2 — Discovery skilli</strong>: Agent czyta <code>name</code> + <code>description</code> WSZYSTKICH skilli (Level 1). Dopasowuje pasujące. Ładuje pełne SKILL.md (Level 2) tylko dla dopasowanych — oszczędza kontekst.</li>
       <li><strong>Krok 3 — Generowanie</strong>: Z pełnym kontekstem (instrukcje + skille) agent generuje odpowiedź.</li>
-      <li>Cały proces jest transparentny dla usera — widzi tylko pytanie → odpowiedź.</li>
     </ul>
   </SlideNotes>
 </PresentationLayout>

@@ -12,7 +12,7 @@ Te instrukcje dotyczą kodu frontendowego:
 Zasady:
 - Dla komponentów Astro:
   - Korzystaj z odseparowanego frontmatteru (`---`) i części template zgodnie z dokumentacją.
-  - Minimalizuj JS w przeglądarce; używaj islands tylko tam, gdzie interakcja jest naprawdę potrzebna.
+  - Używaj islands tylko tam, gdzie interakcja jest naprawdę potrzebna.
 - Dla komponentów frameworków (React/Vue itp.):
   - Preferuj komponenty małe i skupione na jednym zadaniu.
   - Testuj zachowanie (Vitest + testing library) zamiast polegać na snapshotach, chyba że snapshot realnie coś chroni.

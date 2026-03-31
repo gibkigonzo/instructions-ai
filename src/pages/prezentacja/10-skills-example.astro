@@ -3,7 +3,7 @@ import PresentationLayout from '../../layouts/PresentationLayout.astro';
 import SlideNotes from '../../components/SlideNotes.astro';
 ---
 
-<PresentationLayout title="Skill — przykład" slideNumber={11} prevSlug="10-skills" nextSlug="12-skills-gallery">
+<PresentationLayout title="Skill — przykład" slideNumber={11} prevSlug="09-skills" nextSlug="11-skills-gallery">
   <div class="space-y-6">
     <h2 class="text-2xl md:text-3xl font-bold text-center">
       Anatomia <span class="text-purple-400">SKILL.md</span>
@@ -15,7 +15,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
         <p class="text-gray-500 mb-1">--- <span class="text-gray-600 font-sans text-xs ml-2">frontmatter</span></p>
         <p><span class="text-blue-400">name:</span> <span class="text-purple-300">code-review</span></p>
         <p><span class="text-blue-400">description:</span> <span class="text-gray-300">"Prowadzenie pełnego code review"</span></p>
-        <p><span class="text-blue-400">user-invokable:</span> <span class="text-green-300">true</span></p>
+        <p><span class="text-blue-400">user-invocable:</span> <span class="text-green-300">true</span></p>
         <p><span class="text-blue-400">argument-hint:</span> <span class="text-gray-300">"[pliki / PR / diff]"</span></p>
         <p class="text-gray-500 mb-3">---</p>
 
@@ -69,10 +69,10 @@ import SlideNotes from '../../components/SlideNotes.astro';
   <SlideNotes>
     <ul class="list-disc ml-4 mt-2 space-y-1">
       <li>Lewa strona: plik SKILL.md — frontmatter z metadanymi i body z procedurą.</li>
-      <li><code>user-invokable: true</code> — user może wywołać skill ręcznie (<code>/code-review</code>). Skill <code>lint-format</code> ma <code>false</code> — tylko agent go używa automatycznie.</li>
+      <li><code>user-invocable: true</code> — user może wywołać skill ręcznie (<code>/code-review</code>). Skill <code>lint-format</code> ma <code>false</code> — tylko agent go używa automatycznie.</li>
       <li><code>argument-hint</code> — podpowiedź co podać w argumencie (pliki, PR, diff).</li>
       <li>Prawa strona: agent NIE wymaga znajomości nazwy skilla. Wystarczy napisać „zrób review" — agent sam dopasowuje odpowiedni skill.</li>
-      <li>Skill <code>code-review</code> ma też folder <code>examples/</code> z przykładowymi plikami — to Level 3 (zasoby), ładowane jeśli agent uzna że potrzebne.</li>
+      <li>Skill <code>code-review</code> mógłby mieć też np. folder <code>.github/skills/code-review/examples/</code> z przykładowymi plikami — to Level 3 (zasoby), ładowane jeśli agent uzna że potrzebne.</li>
       <li>Format odpowiedzi jest zaszyty w skillu — każdy review wygląda tak samo niezależnie od tego, kto go wywoła.</li>
     </ul>
   </SlideNotes>

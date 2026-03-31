@@ -4,10 +4,10 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="4 agenci" slideNumber={14} prevSlug="13-agents" nextSlug="15-agents-why">
+<PresentationLayout title="4 agenci" slideNumber={14} prevSlug="12-agents" nextSlug="14-pipeline">
   <div class="space-y-6">
     <h2 class="text-2xl md:text-3xl font-bold text-center">
-      4 agenci w naszym repo
+      przykładowi agenci
     </h2>
 
     <div class="grid md:grid-cols-2 gap-4">
@@ -76,7 +76,6 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <li><strong>security</strong> — read-only, nigdy nie obniża zabezpieczeń. Handoff do <code>main-dev</code> żeby ten zaaplikował rekomendacje.</li>
       <li><strong>ops</strong> — read-only, nie dotyka logiki biznesowej. Handoff do <code>main-dev</code> gdy problem wymaga zmiany w kodzie.</li>
       <li>Diagram na dole: graf handoffów. <code>main-dev</code> jest hubem — wszystko wraca do niego gdy trzeba coś zmienić.</li>
-      <li>Brak <code>edit</code> i <code>execute</code> to TWARDA granica, nie „prośba". Agent fizycznie nie ma narzędzia do zapisu.</li>
     </ul>
   </SlideNotes>
 </PresentationLayout>

@@ -4,7 +4,7 @@ import SlideNotes from '../../components/SlideNotes.astro';
 import MermaidDiagram from '../../components/MermaidDiagram.astro';
 ---
 
-<PresentationLayout title="Problem" slideNumber={2} prevSlug="01-intro" nextSlug="03-overview">
+<PresentationLayout title="Problem" slideNumber={2} prevSlug="/" nextSlug="02-overview">
   <div class="space-y-8">
     <h2 class="text-3xl md:text-4xl font-bold text-center">
       Dlaczego domyślny Copilot <span class="text-red-400">nie wystarczy</span>?
@@ -44,8 +44,6 @@ import MermaidDiagram from '../../components/MermaidDiagram.astro';
       <li>Przykład 1: Projekt w Astro, a Copilot generuje Express.js middleware — bo nie wie, że to projekt Astro.</li>
       <li>Przykład 2: Jeden dev dostaje komponenty z Composition API, drugi z Options API — bo Copilot nie zna konwencji zespołu.</li>
       <li>Przykład 3: Copilot wstrzykuje dane użytkownika przez <code>set:html</code> bez sanityzacji — bo nie zna security policy.</li>
-      <li>Problem skaluje się z zespołem — im więcej ludzi, tym większy chaos.</li>
-      <li>Copilot jest potężny, ale bez kontekstu działa „na ślepo".</li>
     </ul>
   </SlideNotes>
 </PresentationLayout>
